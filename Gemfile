@@ -5,7 +5,6 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'will_paginate', '~> 3.0'
 gem "therubyracer"
@@ -21,6 +20,14 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
