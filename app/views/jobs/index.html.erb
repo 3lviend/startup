@@ -1,0 +1,31 @@
+<h1>jobs</h1>
+
+<br />
+<br />
+
+<div id="job_list">
+  <% @categories.each_with_index do |category, index| %>
+    <div id="category-<%= index+1 %>">
+      <h3><%= link_to category.title, show_category_path(:category_id => category.id) %></h3>
+      <% if @jobs[category.id] %>
+      <ul>
+        <% @jobs[category.id].each do |job| %>
+          <li>
+            <a href="/jobs/<%= job.id %>">
+              <span class="title"><%= job.title %></span>
+              <span class="location"><%= job.location %></span>
+              at
+              <span class="company"><%= job.company_name %></span>
+              <span class="date"></span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<br />
+
+<%= link_to 'New Job', new_job_path %>
