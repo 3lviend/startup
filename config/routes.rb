@@ -1,6 +1,8 @@
 StartupJob::Application.routes.draw do
   match "tags/:tag_id" => "tags#show", :as => :show_tag
+  match "tags" => "tags#index", :as => :index_tags
   match "categories/:category_id/show" => "categories#show", :as => :show_category
+  match "categories" => "categories#index", :as => :index_category
 
   resources :jobs, :except => [:index]
 

@@ -5,4 +5,7 @@ class Job < ActiveRecord::Base
   # Alias for acts_as_taggable_on :tags
   acts_as_taggable
   acts_as_taggable_on :skills
+
+  #job relations
+  belongs_to :category
 end

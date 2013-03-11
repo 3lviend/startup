@@ -1,0 +1,12 @@
+
+<% @categories.each do |category| %>
+  <div>
+    <ul><%= link_to category.title, show_category_path(category.id) %>
+    </ul>
+    <br />
+  </div>
+<% end %>
+
+<%= will_paginate @categories %>
+
+<br />

@@ -1,2 +1,23 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div>
+  <h1><%= @category.title %></h1>
+  <br />
+
+  <div>
+    <ul>
+        <% @jobs.each do |job| %>
+          <li>
+            <a href="/jobs/<%= job.id %>">
+              <span class="title"><%= job.title %></span>
+              <span class="location"><%= job.location %></span>
+              at
+              <span class="company"><%= job.company_name %></span>
+              <span class="date"></span>
+            </a>
+          </li>
+        <% end %>
+
+          <br />
+       <%= will_paginate @jobs %>
+      </ul>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<% @tags.each do |tag| %>
+  <div>
+    <ul><%= link_to tag.name, show_tag_path(tag.id) %>
+    </ul>
+    <br />
+  </div>
+<% end %>
+
+<%= will_paginate @tags %>
+<br />
