@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301184344) do
+ActiveRecord::Schema.define(:version => 20130313094006) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -33,7 +33,14 @@ ActiveRecord::Schema.define(:version => 20130301184344) do
     t.boolean  "highlight",    :default => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.string   "job_type"
+    t.string   "salary"
   end
+
+  add_index "jobs", ["company_name"], :name => "index_jobs_on_company_name"
+  add_index "jobs", ["job_type"], :name => "index_jobs_on_job_type"
+  add_index "jobs", ["salary"], :name => "index_jobs_on_salary"
+  add_index "jobs", ["title"], :name => "index_jobs_on_title"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

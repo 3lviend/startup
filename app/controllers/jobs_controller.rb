@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    categories
+    option_selections
     @jobs = Job.all.group_by(&:category_id)
 
     respond_to do |format|
@@ -25,7 +25,7 @@ class JobsController < ApplicationController
   # GET /jobs/new
   # GET /jobs/new.json
   def new
-    categories
+    option_selections
     @job = Job.new
 
     respond_to do |format|
@@ -36,7 +36,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/1/edit
   def edit
-    categories
+    option_selections
     @job = Job.find(params[:id])
   end
 
@@ -50,6 +50,7 @@ class JobsController < ApplicationController
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render json: @job, status: :created, location: @job }
       else
+        option_selections
         format.html { render action: "new" }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
@@ -66,6 +67,7 @@ class JobsController < ApplicationController
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
         format.json { head :no_content }
       else
+        option_selections
         format.html { render action: "edit" }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
@@ -86,7 +88,9 @@ class JobsController < ApplicationController
 
   protected
 
-  def categories
+  def option_selections
     @categories = Category.order(:title)
+    @types = TYPE
+    @salaries = SALARY
   end
 end
