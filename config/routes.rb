@@ -3,6 +3,7 @@ StartupJob::Application.routes.draw do
   match "tags" => "tags#index", :as => :index_tags
   match "categories/:category_id/show" => "categories#show", :as => :show_category
   match "categories" => "categories#index", :as => :index_category
+  match "browse_by/:filter/:q" => "jobs#filtering", :as => :browse_by
 
   resources :jobs, :except => [:index]
 

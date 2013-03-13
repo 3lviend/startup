@@ -86,6 +86,19 @@ class JobsController < ApplicationController
     end
   end
 
+  def filtering
+    @objects = if params[:filter].eql?("salary")
+      Job.where(:salary => SALARY[params[:q].to_i-1]).paginate(:page => params[:page], :per_page => PERPAGE)
+    else
+      Job.where(:job_type => params[:q]).paginate(:page => params[:page], :per_page => PERPAGE)
+    end
+
+    respond_to do |format|
+      format.html # filtering.html.erb
+      format.json { render json: @objects }
+    end
+  end
+
   protected
 
   def option_selections

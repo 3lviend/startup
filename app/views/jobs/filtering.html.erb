@@ -1,0 +1,27 @@
+<h1>Browse by : <%= params[:filter] %></h1>
+<% if params[:filter].eql?("salary") %>
+  <h3>Range salary : <%= SALARY[params[:q].to_i-1] %></h3>
+<% else %>
+  <h3>Type : <%= params[:q] %></h3>
+<% end %>
+<br />
+<br />
+
+<div id="job_list">
+  <ul>
+    <% @objects.each do |job| %>
+      <li>
+        <a href="/jobs/<%= job.id %>">
+          <span class="job_type"><%= job.job_type %></span> --
+          <span class="title"><%= job.title %></span>
+          <span class="location"><%= job.location %></span>
+          at
+          <span class="company"><%= job.company_name %></span>
+          <span class="date"></span>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= will_paginate @objects %>
