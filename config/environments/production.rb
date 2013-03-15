@@ -72,7 +72,7 @@ StartupJob::Application.configure do
     :port                 => 587,
     :domain               => 'gmail.com',
     :user_name            => 'elvin.alvian.siagian',
-    :password             => '5t4r3e2w1q',
+    :password             => '5t4r3e2w1q!',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 end
