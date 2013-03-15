@@ -64,4 +64,14 @@ StartupJob::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'gmail.com',
+    :user_name            => 'elvin.alvian.siagian',
+    :password             => '5t4r3e2w1q',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 end
