@@ -1,0 +1,46 @@
+<h1>Editing profile</h1>
+
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_area :bio %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :portofolio_url %><br />
+    <%= f.text_field :portofolio_url %>
+  </div>
+  <div class="field">
+    <%= f.label :github_url %><br />
+    <%= f.text_field :github_url %>
+  </div>
+  <div class="field">
+    <%= f.label :job_notif %><br />
+    <%= f.number_field :job_notif %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @profile %>

@@ -9,6 +9,8 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'will_paginate', '~> 3.0'
 gem "therubyracer"
 gem 'twitter-bootstrap-rails'
+gem "devise"
+gem "bootstrap-wysihtml5-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.

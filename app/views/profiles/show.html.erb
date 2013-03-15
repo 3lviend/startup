@@ -1,0 +1,31 @@
+<p>
+  <b>Name:</b>
+  <%= @profile.name %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @profile.bio %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @profile.city %>
+</p>
+
+<p>
+  <b>Portofolio url:</b>
+  <%= @profile.portofolio_url %>
+</p>
+
+<p>
+  <b>Github url:</b>
+  <%= @profile.github_url %>
+</p>
+
+<p>
+  <b>Job notif:</b>
+  <%= @profile.job_notif %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %>

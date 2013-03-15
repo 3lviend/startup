@@ -1,4 +1,8 @@
 StartupJob::Application.routes.draw do
+  resources :profiles, :only => [:show, :edit, :update]
+
+  devise_for :users, :controllers => { :sessions => "users/sessions" }
+
   match "tags/:tag_id" => "tags#show", :as => :show_tag
   match "tags" => "tags#index", :as => :index_tags
   match "categories/:category_id/show" => "categories#show", :as => :show_category
