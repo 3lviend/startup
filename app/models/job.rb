@@ -1,6 +1,6 @@
 class Job < ActiveRecord::Base
   attr_accessible :apply_to, :category_id, :company_name, :description, :email, 
-    :location, :publish, :title, :url, :highlight, :skill_list, :job_type, :salary
+    :location, :publish, :title, :url, :highlight, :skill_list, :job_type, :salary, :user_id
 
   #validation
   validates :apply_to, :category_id, :company_name, :description, :email,
@@ -12,4 +12,5 @@ class Job < ActiveRecord::Base
 
   #job relations
   belongs_to :category
+  belongs_to :user
 end

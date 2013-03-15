@@ -48,8 +48,14 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Post new Job", new_job_path  %></li>
-              <li><%= link_to "Tags", index_tags_path  %></li>
-              <li><%= link_to "Categories", index_category_path  %></li>
+              <% if user_signed_in? %>
+              <li><%= link_to "Settings", edit_user_registration_path  %></li>
+              <li><%= link_to "Account", profile_path(current_user.profile)  %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete  %></li>
+              <% else %>
+              <li><%= link_to "Register", new_user_registration_path  %></li>
+              <li><%= link_to "Login", new_user_session_path  %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -85,7 +91,7 @@
               <li><%= link_to "Salaries", "#"  %>
                 <ul>
                   <% SALARY.each_with_index do |salary, i| %>
-                  <li><%= link_to salary, "/browse_by/salary/#{i+1}" %></li>
+                    <li><%= link_to salary, "/browse_by/salary/#{i+1}" %></li>
                   <% end %>
                 </ul>
               </li>
@@ -104,6 +110,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-
+    <script type="text/javascript">
+      $("#job_description").wysihtml5();
+    </script>
   </body>
 </html>

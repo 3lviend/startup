@@ -17,17 +17,17 @@
 
 <br />
 <div>
-<h3>Apply for this position</h3>
-<p>
-  <%= @job.apply_to %>
-</p>
+  <h3>Apply for this position</h3>
+  <p>
+    <%= @job.apply_to %>
+  </p>
 </div>
 
 <div>
   <div class="tag_lists">
     Tag Lists : 
     <% @job.skills.each do |skill| %>
-    <%= link_to skill.name, show_tag_path(:tag_id => skill.id) %>
+      <%= link_to skill.name, show_tag_path(:tag_id => skill.id) %>
     <% end %>
   </div>
   <div class="salary">
@@ -42,6 +42,10 @@
 
 <br />
 
-<%= link_to "Edit", edit_job_path(@job) %>
+<% if user_signed_in? %>
+  <% if current_user.id.eql?(@job.user_id) %>
+    <%= link_to "Edit", edit_job_path(@job) %>
+  <% end %>
+<% end %>
 
 <br />
