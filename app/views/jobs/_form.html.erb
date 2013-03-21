@@ -4,63 +4,63 @@
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
       <ul>
-      <% @job.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @job.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <label for="job_title">Job Title</label><br />
+    <%= f.text_field :title, :style => "width: 300px;", :placeholder => "“Ruby Programmer” or “iOS Programmer”" %>
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.select(:category_id, @categories.collect {|p| [ p.title, p.id ] }, { :prompt => "-- Select Category --" }) %>
+    <%= f.select(:category_id, @categories.collect {|p| [ p.title, p.id ] }, { :prompt => "-- Select Category --" }, :style => "width: 300px;") %>
   </div>
   <div class="field">
     <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.text_field :location, :style => "width: 300px;", :placeholder => " “New York”, “Madrid, Spain”, or “Anywhere” " %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :placeholder => "Enter text ..." %>
+    <label for="job_description">Job Description</label><br />
+    <%= f.text_area :description, :placeholder => "Enter text ...", :style => "width: 700px;" %>
   </div>
   <div class="field">
     <%= f.label :job_type %><br />
-    <%= f.select(:job_type, @types.collect {|t| [ t.capitalize, t ] }, { :prompt => "-- Select Type --" }) %>
+    <%= f.select(:job_type, @types.collect {|t| [ t.capitalize, t ] }, { :prompt => "-- Select Type --" }, :style => "width: 300px;") %>
   </div>
   <div class="field">
     <%= f.label :salary %><br />
-    <%= f.select(:salary, @salaries.collect {|s| [ s.capitalize, s ] }) %>
+    <%= f.select(:salary, @salaries.collect {|s| [ s.capitalize, s ] }, :style => "width: 300px;") %>
   </div>
   <div class="field">
-    <%= f.label :apply_to %><br />
-    <%= f.text_area :apply_to %>
+    <label for="job_apply_to">How to apply</label><br />
+    <%= f.text_area :apply_to, :style => "width: 300px;", :rows => 5, :placeholder => "Example: Send a resume and cv to elvin@funjobs.com" %>
   </div>
+
+  <h2>Tell us about your company</h2>
+  
   <div class="field">
     <%= f.label :company_name %><br />
-    <%= f.text_field :company_name %>
+    <%= f.text_field :company_name, :style => "width: 300px;", :placeholder => "Enter your company or organization’s name." %>
   </div>
   <div class="field">
     <%= f.label :url %><br />
-    <%= f.text_field :url %>
+    <%= f.text_field :url, :style => "width: 300px;", :placeholder => "Example: http://www.twitter.com" %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :style => "width: 300px;", :placeholder => "This is where we’ll send your receipt and confirmation email." %>
   </div>
   <div class="field">
-    Tag skills :<br />
-    <%= f.text_field :skill_list %>
+    <label for="job_skill_list">Tag skills</label><br />
+    <%= f.text_field :skill_list, :style => "width: 300px;", :placeholder => "Example : Ruby, rails, android, twitter.com, iOS" %>
   </div>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-  <div class="field">
-    <%= f.check_box :highlight %>
-    <%= f.label :highlight %>
-  </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Publish Your Job', :class => "btn btn-primary btn-large" %> or <button class="btn btn-large" type="button">Cancel</button>
   </div>
 <% end %>
