@@ -1,0 +1,50 @@
+<br />
+<br />
+<p>
+  <b>Full name:</b>
+  <%= @deposit.full_name %>
+</p>
+
+<p>
+  <b>Birth date:</b>
+  <%= @deposit.birth_date %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @deposit.show_gender %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @deposit.email %>
+</p>
+
+<p>
+  <b>Contact number:</b>
+  <%= @deposit.contact_number %>
+</p>
+
+<p>
+  <b>Education:</b>
+  <%= @deposit.education %>
+</p>
+
+<p>
+  <b>Nationality:</b>
+  <%= @deposit.nationality %>
+</p>
+
+<p>
+  <b>Resume:</b><br />
+  <%= @deposit.resume.html_safe %>
+</p>
+
+<p>
+  <b>Salary:</b>
+  <%= @deposit.salary %>
+</p>
+
+
+<br />
+<%= link_to 'Back', deposits_path %>

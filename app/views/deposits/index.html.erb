@@ -1,0 +1,27 @@
+<h1>Deposits</h1>
+<br />
+<table>
+  <tr>
+    <th>Full name</th>
+    <th>Gender</th>
+    <th>Education</th>
+    <th>Nationality</th>
+    <th>Salary</th>
+    <th></th>
+  </tr>
+
+<% @deposits.each do |deposit| %>
+  <tr>
+    <td><%= link_to deposit.full_name, deposit %></td>
+    <td><%= deposit.show_gender %></td>
+    <td><%= deposit.education %></td>
+    <td><%= deposit.nationality %></td>
+    <td><%= deposit.salary %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<br />
+<%= will_paginate @tags %>
+<br />

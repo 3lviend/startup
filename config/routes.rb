@@ -1,6 +1,8 @@
 StartupJob::Application.routes.draw do
+  resources :deposits, :except => [:destroy, :edit, :update]
   resources :profiles, :only => [:show, :edit, :update]
-
+  resources :jobs, :except => [:index]
+  
   devise_for :users, :controllers => { :sessions => "users/sessions" }
 
   match "tags/:tag_id" => "tags#show", :as => :show_tag
@@ -8,8 +10,6 @@ StartupJob::Application.routes.draw do
   match "categories/:category_id/show" => "categories#show", :as => :show_category
   match "categories" => "categories#index", :as => :index_category
   match "browse_by/:filter/:q" => "jobs#filtering", :as => :browse_by
-
-  resources :jobs, :except => [:index]
 
   root :to => 'jobs#index'
   

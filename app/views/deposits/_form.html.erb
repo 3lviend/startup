@@ -1,0 +1,55 @@
+<%= form_for(@deposit) do |f| %>
+  <% if @deposit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deposit.errors.count, "error") %> prohibited this deposit from being saved:</h2>
+
+      <ul>
+      <% @deposit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :full_name %><br />
+    <%= f.text_field :full_name %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_date %><br />
+    <%= f.date_select :birth_date, :start_year => Time.now.year - 70, :end_year => Time.now.year %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <% [ "male", "female" ].each do |gender| %>
+       <%= gender.capitalize %> <%= f.radio_button :gender, gender, :checked => gender.eql?(@deposit.show_gender) %> &nbsp;&nbsp;
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_number %><br />
+    <%= f.text_field :contact_number %>
+  </div>
+  <div class="field">
+    <%= f.label :education %><br />
+    <%= f.select(:education, ["Doctorate", "Master", "Bachelor", "Diploma", "Cert", "Others"].collect {|t| [ t.capitalize, t ] }, { :prompt => "-- Select Education --" }) %>
+  </div>
+  <div class="field">
+    <%= f.label :nationality %><br />
+    <%= f.text_field :nationality %>
+  </div>
+  <div class="field">
+    <%= f.label :resume %><br />
+    <%= f.text_area :resume, :placeholder => "Enter resume your ...", :style => "width: 700px;"  %>
+  </div>
+  <div class="field">
+    <%= f.label :salary %><br />
+    <%= f.text_field :salary %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Deposit my Resume/CV', :class => "btn btn-primary btn-large" %>
+  </div>
+<% end %>

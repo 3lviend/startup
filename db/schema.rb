@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314171203) do
+ActiveRecord::Schema.define(:version => 20130326051635) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,22 @@ ActiveRecord::Schema.define(:version => 20130314171203) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "deposits", :force => true do |t|
+    t.string   "full_name"
+    t.date     "birth_date"
+    t.boolean  "gender"
+    t.string   "email"
+    t.string   "contact_number"
+    t.string   "education"
+    t.string   "nationality"
+    t.text     "resume"
+    t.string   "salary"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "deposits", ["email"], :name => "index_deposits_on_email", :unique => true
 
   create_table "jobs", :force => true do |t|
     t.string   "title"
